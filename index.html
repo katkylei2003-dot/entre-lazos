@@ -1614,97 +1614,153 @@ html.rc-h #app{overflow:clip}
 @media (max-width:999px){.dlist{grid-template-columns:repeat(2,minmax(0,1fr))}.dlist::before{display:none}.dnote:nth-child(even){margin-top:0}}
 @media (max-width:560px){.dlist{grid-template-columns:1fr}.dnote{transform:none}}
 
-/* ===== hidden jury route: ?lazos ===== */
+
+/* ===== hidden condensed cases (#lz) ===== */
 #recorrido{display:none!important}
 html:not(.lz) #lz{height:0;overflow:hidden;visibility:hidden;padding:0}
 html.lz #app > section.case,html.lz #proyectos .fgrid,html.lz .backp,html.lz .rcback{display:none!important}
-.lzp{--lzw:min(1240px,92vw);padding-bottom:120px;overflow:clip}
-.lz-cover{min-height:60vh;display:grid;place-content:center;justify-items:center;text-align:center;gap:18px;padding:120px 16px 40px}
+.lzp{--lzw:min(1240px,92vw);padding-bottom:40px;overflow:clip}
+.lzp .hand{font-family:var(--f-hand)}
+.lz-cover{min-height:56vh;display:grid;place-content:center;justify-items:center;text-align:center;gap:18px;padding:90px 16px 30px}
 .lz-cover h1{font-family:var(--f-title);font-size:clamp(48px,7.4vw,118px);line-height:.92;color:var(--azul);letter-spacing:-.02em}
 .lz-cover h1 .script{display:block;color:var(--vino);font-size:1.02em;margin-top:.05em}
-.lz-lede{max-width:52ch;font-size:clamp(17px,1.4vw,21px);line-height:1.5;color:var(--ink)}
-.lzc{width:var(--lzw);margin:0 auto;padding-top:60px;position:relative}
+.lz-lede{font-size:clamp(19px,1.6vw,24px);color:var(--ink)}
+.lzc{--fg:var(--tinta);width:var(--lzw);margin:0 auto;padding:clamp(70px,10vh,120px) 0 clamp(40px,6vh,70px);position:relative;color:var(--fg)}
+.lzc + .lzc::before{content:"";position:absolute;left:50%;top:0;width:2px;height:clamp(50px,8vh,90px);background:repeating-linear-gradient(var(--vino) 0 8px,transparent 8px 14px);translate:-50% -50%}
 .lzc .lbl{color:var(--tinta)}
-.lzp .hand{font-family:var(--f-hand)}
-/* 1 · opening */
-.lz-open{position:relative;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:center;min-height:86vh}
+/* dark chapter (Ron) */
+.lz-dark{--fg:var(--papel);box-sizing:border-box;width:100%;padding-inline:max(4vw,calc((100% - var(--lzw))/2));background:var(--noche);border-radius:46px}
+.lz-dark .lz-name,.lz-dark .lz-reto,.lz-dark .lz-big,.lz-dark .lz-no small,.lz-dark blockquote,.lz-dark .lz-kpis span,.lz-dark .lz-kpis b,.lz-dark .lz-state{color:var(--papel)}
+.lz-dark .kp,.lz-dark .kp b{color:var(--papel)}.lz-dark .kp i{color:var(--sol)}
+.lz-dark .lz-big b{color:var(--sol)}
+.lz-dark .lz-kpis span{border-color:color-mix(in srgb,var(--papel) 35%,transparent)}
+.lz-dark .lz-state span{color:var(--sol)}
+.lz-dark .lz-lazo{border-color:color-mix(in srgb,var(--sol) 40%,transparent)}
+.lz-dark .lz-reto em{background:linear-gradient(transparent 60%,color-mix(in srgb,var(--vino) 80%,transparent) 60%)}
+/* generic 12-col overlap grid: children use --c (columns) and --r (rows) */
+.lz-g{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:calc(var(--lzw) / 48);position:relative}
+.lz-g > *{grid-column:var(--c);grid-row:var(--r);margin:0;min-width:0;min-height:0}
+.lz-ph{border-radius:24px;overflow:hidden;box-shadow:0 34px 50px -34px rgba(20,30,70,.6);transform:rotate(var(--rot,1deg))}
+.lz-ph img,.lz-fr img,.lz-scr img{display:block;width:100%;height:100%;object-fit:cover}
+.lz-fr{position:relative;background:var(--hoja,#fffdf4);padding:clamp(6px,.8vw,11px);box-shadow:0 26px 36px -24px rgba(20,30,70,.6);transform:rotate(var(--rot,0deg));z-index:1}
+.lz-fr:nth-child(2){z-index:2}.lz-fr:nth-child(3){z-index:3}
+.lz-scr{border-radius:14px;overflow:hidden;border:clamp(5px,.7vw,9px) solid var(--ink);background:var(--ink);box-shadow:0 26px 36px -24px rgba(10,20,50,.7)}
+.lz-scr img{object-position:50% 0}
+.lz-me,.lz-tag{position:absolute;left:-10px;bottom:16px;background:var(--sol);color:var(--tinta);font-family:var(--f-hand);font-size:18px;padding:3px 12px;border-radius:999px;transform:rotate(-4deg);white-space:nowrap}
+.lz-tag{background:var(--papel);border:1.5px solid var(--tinta);font-family:var(--f-title);font-size:12px;letter-spacing:.04em}
+.lz-cap{position:absolute;right:10px;bottom:-14px;font-size:21px;color:var(--vino2);background:var(--papel);padding:0 10px;border-radius:999px;transform:rotate(-3deg)}
+/* opening = title + challenge */
+.lz-open{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(24px,4vw,64px);align-items:center}
+.lz-open.lz-rev > :first-child,.lz-role.lz-rev > :first-child{order:2}
 .lz-no{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;font-size:clamp(26px,2.4vw,34px)}
 .lz-no small{font-family:var(--f-title);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta)}
-.lz-name{position:relative;z-index:4;font-family:var(--f-title);font-size:clamp(54px,6.4vw,108px);line-height:.88;letter-spacing:-.03em;color:var(--azul);margin:10px 0 6px}
-.lz-open .kp{font-size:clamp(28px,3vw,44px)}
-.lz-q{font-family:var(--f-body);font-size:clamp(20px,1.8vw,27px);line-height:1.35;color:var(--tinta);margin-top:22px;max-width:30ch}
-.lz-q em{font-style:normal;background:linear-gradient(transparent 58%,color-mix(in srgb,var(--sol) 75%,transparent) 58%)}
-.lz-meta{font-family:var(--f-title);font-size:12.5px;letter-spacing:.06em;color:color-mix(in srgb,var(--tinta) 75%,transparent);margin-top:18px;max-width:46ch;line-height:1.5}
-.lz-o-media{position:relative;padding:0 0 70px 40px}
-.lz-hero{margin:0;border-radius:24px;overflow:hidden;box-shadow:0 34px 50px -34px rgba(20,30,70,.6);transform:rotate(1.2deg)}
-.lz-hero img{display:block;width:100%;aspect-ratio:4/3.2;object-fit:cover}
-.lz-pol{position:absolute;margin:0;width:clamp(170px,17vw,240px);padding:10px 10px 12px}
-.lz-pol .slot{aspect-ratio:4/5}
-.lz-pol figcaption{text-align:center;font-size:19px;color:var(--vino2);margin-top:8px;line-height:1}
-.lz-pol-a{left:-10px;bottom:-6px;transform:rotate(-7deg);z-index:2}
-.lz-frase{position:absolute;right:-6px;top:-62px;font-size:clamp(24px,2.3vw,34px);z-index:3;transform:rotate(-4deg)}
-/* 2 · context */
-.lz-ctx{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,5vw,80px);align-items:center;margin-top:clamp(80px,12vh,140px);padding:clamp(40px,6vw,80px) clamp(20px,4vw,60px);background:color-mix(in srgb,var(--cielo) 26%,var(--papel));border-radius:36px 36px 36px 4px;position:relative}
-.lz-ctx-photos{position:relative;min-height:clamp(340px,36vw,500px)}
-.lz-ctx-img{position:absolute;right:0;top:0;width:72%;margin:0;border-radius:18px;overflow:hidden;box-shadow:0 26px 40px -28px rgba(20,30,70,.6);transform:rotate(2deg)}
-.lz-ctx-img img{display:block;width:100%;aspect-ratio:4/3.4;object-fit:cover}
-.lz-pol-b{left:0;bottom:0;transform:rotate(-5deg);z-index:2;width:clamp(170px,18vw,250px)}
-.lz-big{font-size:clamp(20px,1.9vw,28px);line-height:1.38;color:var(--tinta);margin-top:12px}
+.lz-name{font-family:var(--f-title);font-size:clamp(50px,6vw,100px);line-height:.9;letter-spacing:-.03em;color:var(--azul);margin:10px 0 6px;position:relative;z-index:4}
+.lz-open .kp{font-size:clamp(24px,2.5vw,38px)}
+.lz-reto{font-size:clamp(19px,1.65vw,25px);line-height:1.4;color:var(--fg);margin-top:20px;max-width:34ch}
+.lz-reto em{font-style:normal;background:linear-gradient(transparent 60%,color-mix(in srgb,var(--sol) 75%,transparent) 60%)}
+.lz-meta{font-family:var(--f-title);font-size:12.5px;letter-spacing:.06em;color:color-mix(in srgb,currentColor 75%,transparent);margin-top:18px;line-height:1.5}
+.lz-badge{display:inline-block;margin-top:18px;font-family:var(--f-hand);font-size:22px;color:var(--tinta);background:var(--sol);padding:4px 16px;border-radius:999px;transform:rotate(-2deg)}
+.lz-frase{align-self:center;font-size:clamp(22px,2.2vw,32px);transform:rotate(-4deg);z-index:4}
+/* stacked opening (title on top, media below full width) */
+.lz-stack{grid-template-columns:1fr}
+.lz-stack .lz-o-txt{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(24px,4vw,64px);align-items:end}
+.lz-stack .lz-o-txt > .lz-reto,.lz-stack .lz-o-txt > .lz-meta{grid-column:2}
+.lz-stack .lz-o-txt > .lz-reto{grid-row:1/4;align-self:end;margin:0}
+.lz-stack .lz-o-txt > .lz-meta{grid-row:4}
+.lz-ronstrip .ron-strip{margin-top:30px}
+/* role */
+.lz-role{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(30px,5vw,80px);align-items:center;margin-top:clamp(80px,12vh,140px)}
+.lz-h{font-size:clamp(40px,4.4vw,66px)}
+.lz-big{font-size:clamp(20px,1.9vw,28px);line-height:1.38;color:var(--fg);margin-top:10px}
 .lz-big b{color:var(--vino);font-weight:400;font-style:italic}
-.lz-voices{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:12px}
-.lz-voices li{display:flex;gap:14px;align-items:center}
-.lz-voices .bt{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--azul);color:var(--papel);font-family:var(--f-title);font-size:14px}
-.lz-voices li:nth-child(2) .bt{background:var(--vino2)}.lz-voices li:nth-child(3) .bt{background:var(--sol);color:var(--tinta)}
-.lz-voices p{font-size:16.5px;line-height:1.4;color:var(--ink)}
-.lz-voices b{display:block;font-family:var(--f-title);font-weight:400;font-size:14px;letter-spacing:.04em;color:var(--tinta)}
-.lz-note{font-size:22px;color:var(--vino2);margin-top:18px}
-/* 3 · role */
-.lz-role{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(30px,5vw,80px);align-items:center;margin-top:clamp(90px,14vh,160px)}
-.lz-role-h{font-size:clamp(40px,4.4vw,66px)}
-.lz-small{font-size:16.5px;line-height:1.5;color:var(--ink2,var(--ink));margin-top:14px;max-width:44ch}
-.lz-fan{position:relative;min-height:clamp(380px,40vw,560px)}
-.lz-piece{position:absolute;margin:0;width:52%;background:var(--hoja,#fffdf4);padding:10px;box-shadow:0 26px 36px -26px rgba(20,30,70,.6)}
-.lz-piece img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
-.lz-piece.p1{left:0;top:6%;transform:rotate(-6deg);z-index:2}
-.lz-piece.p2{left:26%;top:0;transform:rotate(2deg);z-index:1}
-.lz-piece.p3{right:0;top:22%;transform:rotate(7deg);z-index:3;width:44%}
-.lz-me{position:absolute;left:-14px;bottom:18px;background:var(--sol);color:var(--tinta);font-family:var(--f-hand);font-size:19px;padding:3px 12px;border-radius:999px;transform:rotate(-4deg)}
-/* 4 · blueprint + 5 · results */
-.lz-sec-h{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:26px}
-.lz-sec-h .hw{font-size:clamp(28px,2.6vw,38px)}
+.lz-narrow{max-width:40ch}
+.lz-bignum{display:grid;justify-items:center;text-align:center;gap:6px}
+.lz-bignum b{font-family:var(--f-script);font-weight:400;font-size:clamp(110px,14vw,220px);line-height:.8;color:var(--azul)}
+.lz-bignum span{font-family:var(--f-hand);font-size:24px;color:var(--vino2)}
+/* what we made */
+.lz-made{margin-top:clamp(80px,12vh,140px)}
+.lz-sec-h{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:22px;font-size:clamp(30px,2.8vw,42px)}
 .lz-hint{font-size:20px;color:var(--vino2);margin-left:auto}
-.lz-sbp{margin-top:clamp(90px,14vh,160px)}
-.lz-res{margin-top:clamp(90px,14vh,160px)}
-.lz-res-foot{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,4vw,60px);align-items:center;margin-top:50px}
-.lz-nums{display:grid;gap:18px}
-.lz-nums span{display:grid;grid-template-columns:auto 1fr;column-gap:16px;align-items:center;font-size:16px;color:var(--tinta);line-height:1.3}
-.lz-nums b{font-family:var(--f-script);font-weight:400;font-size:clamp(56px,5vw,80px);line-height:.8;color:var(--azul)}
-.lz-vq .vnote{margin-top:0!important}
-.lz-state{font-family:var(--f-title);font-size:13px;color:color-mix(in srgb,var(--tinta) 80%,transparent);margin-top:26px;text-align:right}
+.lz-dark .lz-hint{color:var(--sol)}
+.lz-moments{list-style:none;padding:0;margin:34px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,2vw,28px);position:relative}
+.lz-moments::before{content:"";position:absolute;left:3%;right:3%;top:15px;border-top:3px dashed color-mix(in srgb,var(--vino) 50%,transparent)}
+.lz-moments li{position:relative;display:grid;gap:10px;justify-items:start}
+.lz-moments .n{width:32px;height:32px;border-radius:50%;background:var(--vino);color:var(--papel);display:grid;place-items:center;font-family:var(--f-title);font-size:14px;position:relative}
+.lz-moments b{font-family:var(--f-hand);font-weight:400;font-size:24px;color:var(--vino2);line-height:1}
+.lz-moments figure{margin:0;width:100%;background:var(--hoja,#fffdf4);padding:8px;box-shadow:0 20px 30px -22px rgba(20,30,70,.6)}
+.lz-moments li:nth-child(odd) figure{transform:rotate(-1.5deg)}.lz-moments li:nth-child(even) figure{transform:rotate(1.5deg)}
+.lz-moments img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.lz-g-strip{margin-top:60px}
+.lz-totems{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,4vw,60px);align-items:center;margin-top:60px}
+.lz-totems .tside .prose{display:none}
+.lz-board{margin:60px 0 0;position:relative}
+.lz-board img{display:block;width:100%;border-radius:18px;box-shadow:0 30px 44px -30px rgba(20,30,70,.6)}
+.lz-board figcaption{position:absolute;right:20px;top:-18px;font-size:24px;color:var(--vino2);background:var(--papel);padding:0 12px;border-radius:999px;transform:rotate(3deg)}
+.lz-ed{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:clamp(24px,4vw,60px);align-items:center}
+.lz-laptop{margin:0}.lz-laptop img{display:block;width:100%;filter:drop-shadow(0 18px 24px rgba(20,30,70,.28))}
+.lz-list{list-style:none;padding:0;margin:0;display:grid;gap:18px;counter-reset:li}
+.lz-list li{counter-increment:li;display:grid;grid-template-columns:auto 1fr;column-gap:14px;font-size:15.5px;line-height:1.4;color:var(--ink)}
+.lz-list li::before{content:counter(li);grid-row:1/3;width:30px;height:30px;border-radius:50%;background:var(--vino);color:var(--papel);display:grid;place-items:center;font-family:var(--f-title);font-size:13px}
+.lz-list b{font-family:var(--f-title);font-weight:400;font-size:17px;color:var(--tinta)}
+/* proof */
+.lz-proof{margin-top:clamp(70px,10vh,120px);display:grid;justify-items:center;text-align:center;gap:22px}
+.lz-num{display:grid;grid-template-columns:auto minmax(0,30ch);column-gap:18px;align-items:center;text-align:left}
+.lz-num b{font-family:var(--f-script);font-weight:400;font-size:clamp(70px,7vw,110px);line-height:.8;color:var(--azul)}
+.lz-num span{font-size:17px;line-height:1.4;color:var(--fg)}
+.lz-role .lz-num{margin-top:24px}
+.lz-quote{margin:0;font-family:var(--f-body);font-style:italic;font-size:clamp(22px,2.2vw,32px);line-height:1.3;color:var(--fg);max-width:32ch}
+.lz-quote cite{display:block;margin-top:10px;font-style:normal;font-family:var(--f-title);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--vino2)}
+.lz-kpis{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.lz-kpis span{display:grid;justify-items:center;text-align:center;min-width:120px;max-width:200px;font-size:14px;line-height:1.3;color:var(--tinta);padding:10px 16px;border:1.5px dashed color-mix(in srgb,var(--tinta) 40%,transparent);border-radius:16px}
+.lz-kpis b{font-family:var(--f-title);font-weight:400;font-size:clamp(26px,2.4vw,36px);color:var(--azul)}
+.lz-role .lz-kpis{justify-content:flex-start;margin-top:22px}
+.lz-state{font-family:var(--f-title);font-size:13px;line-height:1.4;color:color-mix(in srgb,var(--tinta) 80%,transparent)}
 .lz-state span{font-family:var(--f-hand);font-size:18px;color:var(--vino2);margin-right:8px}
-/* 6 · the lazo */
-.lz-lazo{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(30px,5vw,80px);align-items:center;margin-top:clamp(100px,16vh,180px);padding:clamp(40px,6vw,80px) clamp(20px,5vw,70px);border-top:2px dashed color-mix(in srgb,var(--vino) 35%,transparent);border-bottom:2px dashed color-mix(in srgb,var(--vino) 35%,transparent)}
-.lz-pol-c{position:relative;transform:rotate(-4deg);width:clamp(190px,20vw,280px)}
-.lz-lazo-txt > p{font-size:clamp(30px,3vw,44px)}
-.lz-lazo blockquote{margin:14px 0 0;font-family:var(--f-body);font-size:clamp(28px,3.2vw,50px);line-height:1.2;color:var(--tinta);max-width:24ch}
+.lz-state.real::before{content:"✓";display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--vino2);color:var(--papel);font-size:11px;margin-right:8px;vertical-align:middle}
+.lz-made > .lz-state{text-align:right;margin-top:26px}
+/* the lazo (emphasis, short) */
+.lz-lazo{margin-top:clamp(70px,10vh,120px);padding:clamp(34px,5vw,64px) 0;border-top:2px dashed color-mix(in srgb,var(--vino) 35%,transparent);border-bottom:2px dashed color-mix(in srgb,var(--vino) 35%,transparent);text-align:center;display:grid;justify-items:center}
+.lz-lazo > p,.lz-lazo > div > p{font-size:clamp(30px,3vw,44px)}
+.lz-lazo blockquote{margin:12px auto 0;font-family:var(--f-body);font-size:clamp(28px,3.4vw,54px);line-height:1.18;color:var(--fg);max-width:22ch}
 .lz-lazo .hl{background:linear-gradient(transparent 60%,color-mix(in srgb,var(--sol) 80%,transparent) 60%);color:var(--vino)}
-.lz-next{display:flex;align-items:baseline;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:80px;color:var(--tinta)}
-.lz-next .hand{font-size:22px;color:var(--vino2)}
-.lz-next b{font-family:var(--f-title);font-weight:400;font-size:clamp(28px,3vw,44px);color:var(--azul)}
-.lz-next small{font-size:14px;color:color-mix(in srgb,var(--tinta) 60%,transparent);width:100%;text-align:center}
+.lz-dark .lz-lazo .hl{color:var(--sol);background:none;text-decoration:underline wavy color-mix(in srgb,var(--sol) 70%,transparent);text-underline-offset:8px}
+.lz-lazo:has(.lz-lazo-pic){grid-template-columns:auto minmax(0,1fr);text-align:left;gap:clamp(30px,5vw,70px);align-items:center;justify-items:start}
+.lz-lazo:has(.lz-lazo-pic) blockquote{margin-left:0}
+.lz-lazo-pic{width:clamp(200px,24vw,330px)}
+.lz-lazo-pic img{aspect-ratio:4/3}
+/* Pandora's: the closing chapter */
+.lz-gather{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:40px}
+.lz-gather span{font-family:var(--f-hand);font-size:19px;color:var(--papel);background:var(--vino2);padding:4px 13px;border-radius:999px;transform:translate(calc((var(--k) - 3)*70px),calc(-80px - var(--k)*10px)) rotate(calc((var(--k) - 3)*10deg));opacity:0;transition:transform .8s steps(6,end),opacity .3s steps(2);transition-delay:calc(var(--k)*.1s)}
+.lz-gather.in span{transform:none;opacity:1}
+.lz-gather span:nth-child(odd){background:var(--azul)}
+.lz-pan .lz-name{font-size:clamp(64px,8vw,140px)}
+.lz-pan-media{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(16px,3vw,40px);align-items:end;margin-top:34px}
+.lz-video video{display:block;width:100%;border-radius:26px;box-shadow:0 34px 50px -34px rgba(20,30,70,.6);aspect-ratio:16/9;object-fit:cover}
+.lz-pan-media .lz-fr img{aspect-ratio:4/5}
+.lz-proof-pan{padding:clamp(40px,6vw,70px) clamp(16px,4vw,50px);background:color-mix(in srgb,var(--cielo) 24%,var(--papel));border-radius:40px 40px 40px 6px}
+.lz-lazo-pan{background:var(--azul);border:0;border-radius:40px;padding:clamp(40px,6vw,80px) clamp(20px,5vw,70px)}
+.lz-lazo-pan blockquote{color:var(--papel);max-width:26ch;font-size:clamp(26px,3vw,46px)}
+.lz-lazo-pan .hl{color:var(--sol);background:none}
+.lz-end{display:grid;justify-items:center;text-align:center;gap:22px;padding:clamp(80px,12vh,140px) 16px 40px}
+.lz-end h2{font-family:var(--f-title);font-size:clamp(40px,5.4vw,84px);line-height:.95;color:var(--azul);letter-spacing:-.02em}
+.lz-end h2 .script{display:block;color:var(--vino);margin-top:.06em}
+.lz-exit{all:unset;cursor:pointer;font-family:var(--f-hand);font-size:20px;color:color-mix(in srgb,var(--tinta) 55%,transparent);border-bottom:1.5px dashed currentColor;padding:2px 4px}
+.lz-exit:hover,.lz-exit:focus-visible{color:var(--vino2)}
+.lz-clone{width:100%}
 @media (max-width:900px){
- .lz-open,.lz-ctx,.lz-role,.lz-res-foot{grid-template-columns:1fr}
- .lz-open{min-height:0}
- .lz-o-media{padding:0 0 90px 0;margin-top:20px}
- .lz-ctx-photos{min-height:420px}
- .lz-fan{min-height:clamp(360px,90vw,520px)}
- .lz-lazo{grid-template-columns:1fr;justify-items:center;text-align:center}
- .lz-lazo blockquote{margin-inline:auto}
+ .lz-open,.lz-role,.lz-totems,.lz-ed,.lz-stack .lz-o-txt,.lz-pan-media{grid-template-columns:1fr}
+ .lz-open.lz-rev > :first-child,.lz-role.lz-rev > :first-child{order:0}
+ .lz-stack .lz-o-txt > .lz-reto,.lz-stack .lz-o-txt > .lz-meta{grid-column:1;grid-row:auto;margin-top:18px}
+ .lz-moments{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}
+ .lz-moments::before{display:none}
+ .lz-g{grid-auto-rows:calc(var(--lzw) / 30)}
  .lz-hint{margin-left:0}
- .lz-state{text-align:left}
+ .lz-made > .lz-state{text-align:left}
+ .lz-lazo:has(.lz-lazo-pic){grid-template-columns:1fr;justify-items:center;text-align:center}
+ .lz-lazo:has(.lz-lazo-pic) blockquote{margin-left:auto}
+ .lz-dark{border-radius:28px}
 }
 
-@media (max-width:900px){.lz-open > .dd.floater{display:none}}
 </style>
 <div id="app"><style id="theme" data-state="{}"></style>
 <header class="top" id="top">
@@ -2042,97 +2098,393 @@ html.lz #app > section.case,html.lz #proyectos .fgrid,html.lz .backp,html.lz .rc
     </a></li>
   </ol>
 </section>
-<!-- ===== Página oculta del recorrido (solo con ?lazos) ===== -->
+<!-- ===== Versión resumida escondida (doble clic en "Ocho lazos" o Shift+L) ===== -->
 <section id="lz" class="lzp" aria-label="Entre Lazos: el recorrido">
 
   <header class="lz-cover" data-a>
     <span class="lbl">Entre Lazos · el recorrido</span>
     <h1><span>Ocho proyectos,</span> <span class="script">un mismo hilo</span></h1>
-    <p class="lz-lede">Cada proyecto me dejó un lazo distinto. Este es el camino, de la empatía hasta el proyecto donde todos se encuentran.</p>
+    <p class="lz-lede">Cada proyecto me dejó un lazo distinto.</p>
     <svg class="hs" data-s="arrowR" viewBox="0 0 120 40" style="position:relative;width:80px;height:30px;transform:rotate(90deg);--dl:.8s"></svg>
   </header>
 
-  <!-- ===================== LAZO 01 · CONECTADOS ===================== -->
-  <article class="lzc lz-con" id="lz-conectados">
-
-    <!-- 1 · apertura -->
+  <!-- ===================== 01 · CONECTADOS ===================== -->
+  <article class="lzc" style="--pc:var(--cielo)">
     <div class="lz-open" data-a>
-      <svg class="dd floater boil" data-d="doodle1" data-fill="#5c0015" data-move style="z-index:3;--d:1.5s;--dl:.4s;left:-2%;top:2%;width:clamp(60px,6vw,96px)"></svg>
       <div class="lz-o-txt">
         <p class="lz-no"><span class="hw" data-colors="azul">Lazo 01</span><small>empatía e investigación</small></p>
         <h2 class="lz-name">Conectados</h2>
-        <p class="kp pe-kp">por la <b>salud</b> de tu <i>hijo</i> ✦</p>
-        <p class="lz-q rise">¿Cómo hacer que ir al pediatra sea <em>más cercano, claro y confiable</em> para los niños y sus familias?</p>
-        <p class="lz-meta rise">2024 · Clínica Cristo Redentor · con Marialicia Cañas, Erika Godoy y Gabriela Castro</p>
+        <p class="kp">por la <b>salud</b> de tu <i>hijo</i> ✦</p>
+        <p class="lz-reto rise">El área de pediatría de la Clínica Cristo Redentor existía, pero casi nadie la conocía. ¿Cómo hacer que ir al pediatra fuera <em>más cercano, claro y confiable</em> para los niños y sus familias?</p>
+        <p class="lz-meta rise">2024 · con Marialicia Cañas, Erika Godoy y Gabriela Castro</p>
       </div>
-      <div class="lz-o-media">
-        <figure class="lz-hero rise"><img data-from="#pediatria img[alt='Propuesta de murales para el área de pediatría']" alt="Propuesta de murales para el área de pediatría"></figure>
-        <figure class="polaroid tape lz-pol lz-pol-a rise" style="--dl:.3s"><div class="slot" data-slot data-glyph="L" data-label="Tu foto: el equipo en la clínica"></div><figcaption class="hand">nosotras en la clínica</figcaption></figure>
-        <p class="lz-frase" data-move><span class="hw" data-colors="vino2">que la visita dé menos miedo</span></p>
-      </div>
-    </div>
-
-    <!-- 2 · el contexto -->
-    <div class="lz-ctx" data-a>
-      <div class="lz-ctx-photos">
-        <figure class="polaroid lz-pol lz-pol-b rise"><div class="slot" data-slot data-glyph="L" data-label="Tu foto: entrevistas u observación"></div><figcaption class="hand">escuchando a la clínica</figcaption></figure>
-        <figure class="lz-ctx-img rise" style="--dl:.15s"><img data-from="#pediatria img[alt='Juegos interactivos para la sala de espera']" alt="Juegos interactivos para la sala de espera"></figure>
-      </div>
-      <div class="lz-ctx-txt">
-        <span class="lbl">el reto</span>
-        <p class="lz-big rise">El área de pediatría existía, pero <b>casi nadie la conocía</b>. Los padres llegaban solo cuando sus hijos estaban enfermos y la sala de espera se sentía fría para un niño.</p>
-        <ul class="lz-voices">
-          <li class="rise"><span class="bt">VL</span><p><b>La pediatra</b>revisaba a cada rato si había alguien esperando: nada le avisaba.</p></li>
-          <li class="rise" style="--dl:.12s"><span class="bt">T</span><p><b>Las familias</b>querían confianza y explicaciones claras.</p></li>
-          <li class="rise" style="--dl:.24s"><span class="bt">N</span><p><b>Los niños</b>necesitaban un lugar donde sentirse seguros.</p></li>
-        </ul>
-        <p class="lz-note hand rise">5 entrevistas con doctores, pacientes y recepcionistas</p>
+      <div class="lz-g lz-g-open">
+        <figure class="lz-ph rise" style="--c:1/11;--r:1/12"><img data-from="#pediatria img[alt^='Propuesta de murales']" alt="Propuesta de murales para el área de pediatría"></figure>
+        <figure class="lz-fr rise" style="--c:6/13;--r:9/18;--rot:4deg;--dl:.2s"><img data-from="#pediatria img[alt^='Juegos interactivos']" alt="Juegos interactivos para la sala de espera"></figure>
+        <p class="lz-frase" style="--c:1/7;--r:13/15"><span class="hw" data-colors="vino2">que la visita dé menos miedo</span></p>
       </div>
     </div>
 
-    <!-- 3 · mi rol -->
     <div class="lz-role" data-a>
       <div class="lz-role-txt">
-        <p class="lz-role-h"><span class="hw" data-colors="vino2">mi rol</span></p>
+        <p class="lz-h"><span class="hw" data-colors="vino2">mi rol</span></p>
         <p class="lz-big rise">Diseñé la experiencia en el <b>Service Blueprint</b> y la convertí en piezas reales: flyers, brochures y el libro informativo.</p>
-        <p class="lz-small rise">Conecté cada pieza gráfica con lo que las familias necesitaban y con cómo funciona el servicio en el día a día.</p>
       </div>
-      <div class="lz-fan">
-        <figure class="lz-piece p1 rise"><img data-from="#pediatria img[alt='Flyer informativo del área de pediatría']" alt="Flyer informativo del área de pediatría"><span class="lz-me">✦ lo diseñé yo</span></figure>
-        <figure class="lz-piece p2 rise" style="--dl:.12s"><img data-from="#pediatria img[alt='Folleto informativo para padres']" alt="Folleto informativo para padres"></figure>
-        <figure class="lz-piece p3 rise" style="--dl:.24s"><img data-from="#pediatria img[alt='Plantilla de pitch para la consulta']" alt="Plantilla de pitch para la consulta"></figure>
+      <div class="lz-g lz-g-fan">
+        <figure class="lz-fr rise" style="--c:1/7;--r:2/14;--rot:-6deg"><img data-from="#pediatria img[alt^='Flyer informativo']" alt="Flyer informativo del área de pediatría"><span class="lz-me">✦ lo diseñé yo</span></figure>
+        <figure class="lz-fr rise" style="--c:4/10;--r:1/13;--rot:2deg;--dl:.12s"><img data-from="#pediatria img[alt^='Folleto informativo']" alt="Folleto informativo para padres"></figure>
+        <figure class="lz-fr rise" style="--c:8/13;--r:4/15;--rot:7deg;--dl:.24s"><img data-from="#pediatria img[alt^='Plantilla de pitch']" alt="Plantilla de pitch para la consulta"></figure>
       </div>
     </div>
 
-    <!-- 4 · el recorrido de la familia (componente interactivo del caso) -->
-    <div class="lz-sbp" data-a>
-      <div class="lz-sec-h"><span class="lbl">Service Blueprint</span><span class="hw">el recorrido de la familia</span><p class="lz-hint hand">tocá cada momento de la visita ✦</p></div>
-      <div class="lz-clone" data-clone="#pediatria [data-sbp]"></div>
-    </div>
-
-    <!-- 5 · lo que desarrollamos -->
-    <div class="lz-res" data-a>
-      <div class="lz-sec-h"><span class="lbl">Lo que desarrollamos</span><span class="hw">un sistema, muchas piezas</span></div>
-      <div class="lz-clone" data-clone="#pediatria .pe-clg"></div>
-      <div class="lz-res-foot">
-        <div class="lz-nums rise"><span><b>5</b>entrevistas</span><span><b>4</b>prototipos presentados a la pediatra</span><span><b>3</b>áreas conectadas</span></div>
-        <div class="lz-clone lz-vq" data-clone="#pediatria .vnote"></div>
+    <div class="lz-made" data-a>
+      <div class="lz-sec-h"><span class="hw" data-colors="azul">lo que desarrollamos</span></div>
+      <p class="lz-big lz-narrow rise">Un <b>Service Blueprint</b> de toda la visita y las experiencias que lo acompañan en cada momento.</p>
+      <ol class="lz-moments">
+        <li class="rise"><span class="n">1</span><b>antes de llegar</b><figure><img data-from="#pediatria img[alt^='Flyer informativo']" alt="Flyer informativo"></figure></li>
+        <li class="rise" style="--dl:.1s"><span class="n">2</span><b>en la sala de espera</b><figure><img data-from="#pediatria img[alt^='Ambientación infantil']" alt="Ambientación infantil con murales"></figure></li>
+        <li class="rise" style="--dl:.2s"><span class="n">3</span><b>en la consulta</b><figure><img data-from="#pediatria img[alt^='Tarjetas de comunicación']" alt="Tarjetas de comunicación"></figure></li>
+        <li class="rise" style="--dl:.3s"><span class="n">4</span><b>después de la consulta</b><figure><img data-from="#pediatria img[alt^='Ficha de seguimiento']" alt="Ficha de seguimiento pediátrico"></figure></li>
+      </ol>
+      <div class="lz-g lz-g-strip">
+        <figure class="lz-fr rise" style="--c:1/5;--r:1/9;--rot:-2deg"><img data-from="#pediatria img[alt^='Manual de construcción']" alt="Manual de construcción de juegos"></figure>
+        <figure class="lz-fr rise" style="--c:5/9;--r:2/10;--rot:1.5deg;--dl:.1s"><img data-from="#pediatria img[alt^='Juegos interactivos']" alt="Juegos interactivos"></figure>
+        <figure class="lz-fr rise" style="--c:9/13;--r:1/9;--rot:-1deg;--dl:.2s"><img data-from="#pediatria img[alt^='Folleto informativo']" alt="Folleto para padres"></figure>
       </div>
-      <p class="lz-state rise"><span>estado</span>Propuesta de mejora de servicio, presentada a la clínica</p>
     </div>
 
-    <!-- 6 · el lazo -->
+    <div class="lz-proof" data-a>
+      <p class="lz-num rise"><b>4</b><span>prototipos presentados a la pediatra para recibir su retroalimentación</span></p>
+      <blockquote class="lz-quote rise">“Todas las ideas cumplían necesidades latentes en la clínica.”<cite>Dra. Violeta López · pediatra</cite></blockquote>
+      <p class="lz-state"><span>estado</span>Propuesta de mejora de servicio</p>
+    </div>
+
     <div class="lz-lazo" data-a>
-      <figure class="polaroid tape lz-pol lz-pol-c rise"><div class="slot" data-slot data-glyph="L" data-label="Tu foto: presentando o trabajando en el proyecto"></div></figure>
-      <div class="lz-lazo-txt">
-        <p><span class="hw" data-colors="vino">el lazo que dejó en mí</span></p>
-        <blockquote class="rise">Aprendí a diseñar desde la <span class="hl">empatía</span>, mirando más allá de lo evidente: lo que siente una familia antes de entrar a la consulta.</blockquote>
-        <svg class="dd" data-d="nudo" data-fill="#6b2138" style="--d:1.3s;--dl:.3s;width:min(130px,40%);margin-top:10px"></svg>
+      <p><span class="hw" data-colors="vino">el lazo que dejó en mí</span></p>
+      <blockquote class="rise">Aprendí a diseñar desde la <span class="hl">empatía</span>, mirando más allá de lo evidente.</blockquote>
+    </div>
+  </article>
+
+  <!-- ===================== 02 · RON CIHUATÁN ===================== -->
+  <article class="lzc lz-dark" style="--pc:var(--noche)">
+    <div class="lz-open lz-stack" data-a>
+      <div class="lz-o-txt">
+        <p class="lz-no"><span class="hw" data-colors="sol">Lazo 02</span><small>experiencias e insights</small></p>
+        <h2 class="lz-name">Ron Cihuatán</h2>
+        <p class="kp">donde las <b>leyendas</b> cobran <i>vida</i> ✦</p>
+        <p class="lz-reto rise">El tour de la destilería estaba bien contado, pero no se vivía: solo 4 de cada 10 visitantes compraban al final. Lo convertimos en una <em>experiencia multisensorial</em> que empieza antes de llegar y sigue después de partir.</p>
+      </div>
+      <div class="lz-clone lz-ronstrip" data-clone="#cihuatan .ron-strip"></div>
+    </div>
+
+    <div class="lz-role lz-rev" data-a>
+      <div class="lz-role-txt">
+        <p class="lz-h"><span class="hw" data-colors="sol">mi rol</span></p>
+        <p class="lz-big rise">Diseñé la <b>estrategia del servicio</b>: el recorrido y sus estaciones, cada punto de contacto, los manuales y los KPIs.</p>
+      </div>
+      <div class="lz-g lz-g-two">
+        <figure class="lz-fr rise" style="--c:1/9;--r:1/12;--rot:-3deg"><img data-from="#cihuatan img[alt^='Tarjeta de la estación 2']" alt="Tarjeta de la estación 2, el canto del colibrí"></figure>
+        <figure class="lz-fr rise" style="--c:6/13;--r:7/16;--rot:4deg;--dl:.15s"><img data-from="#cihuatan img[alt^='Pasaporte legendario']" alt="Pasaporte legendario"></figure>
       </div>
     </div>
 
-    <p class="lz-next rise"><span class="hand">siguiente lazo</span><b>Ron Cihuatán</b><small>(lo armamos cuando apruebes este)</small></p>
+    <div class="lz-made" data-a>
+      <div class="lz-clone" data-clone="#cihuatan .dark-panel"></div>
+      <div class="lz-sec-h" style="margin-top:60px"><span class="hw" data-colors="sol">los prototipos</span><span class="lz-hint hand">arrastrá o usá las flechas</span></div>
+      <div class="lz-clone" data-clone="#cihuatan [data-dstrip]"></div>
+      <div class="lz-totems">
+        <div class="lz-clone" data-clone="#cihuatan [data-tdeck]"></div>
+        <p class="lz-big rise">Al final, cada visitante elige <b>el tótem</b> que más le habla y se lleva su mensaje a casa.</p>
+      </div>
+    </div>
+
+    <div class="lz-proof" data-a>
+      <div class="lz-kpis rise"><span><b>+10–15 %</b>percepción premium</span><span><b>+5–10 %</b>ventas post-tour</span><span><b>+10</b>puntos de NPS</span></div>
+      <p class="lz-state"><span>estado</span>Propuesta de experiencia · las cifras son proyecciones</p>
+    </div>
+
+    <div class="lz-lazo" data-a>
+      <p><span class="hw" data-colors="sol">el lazo que dejó en mí</span></p>
+      <blockquote class="rise">Aprendí a convertir hallazgos en <span class="hl">experiencias intencionales</span> y emocionales.</blockquote>
+    </div>
   </article>
+
+  <!-- ===================== 03 · FORMA ===================== -->
+  <article class="lzc" style="--pc:#c9c92a">
+    <div class="lz-open lz-rev" data-a>
+      <div class="lz-o-txt">
+        <p class="lz-no"><span class="hw" data-colors="azul">Lazo 03</span><small>exploración digital</small></p>
+        <h2 class="lz-name">FORMA</h2>
+        <p class="kp">aprender a tu <i>forma</i> ✦</p>
+        <p class="lz-reto rise">Los estudiantes creativos aprenden mirando, haciendo y compartiendo, pero las plataformas no. En el UX Bootjam propusimos una plataforma <em>más visual, flexible y conectada</em>.</p>
+      </div>
+      <div class="lz-g lz-g-open">
+        <figure class="lz-scr rise" style="--c:1/11;--r:1/13"><img data-from="#forma img[alt^='Landing de FORMA']" alt="Landing de FORMA"></figure>
+        <figure class="lz-scr rise" style="--c:5/13;--r:9/19;--dl:.2s"><img data-from="#forma img[alt^='Inicio del estudiante']" alt="Inicio del estudiante en FORMA"></figure>
+      </div>
+    </div>
+
+    <div class="lz-role" data-a>
+      <div class="lz-role-txt">
+        <p class="lz-h"><span class="hw" data-colors="vino2">mi rol</span></p>
+        <p class="lz-big rise">Me concentré en el <b>UX/UI</b>: llevé la propuesta a interfaces en Figma, cuidando cómo se conecta cada pantalla con las demás.</p>
+      </div>
+      <p class="lz-bignum rise"><b>≈50 %</b><span>de las pantallas del prototipo las diseñé yo</span></p>
+    </div>
+
+    <div class="lz-made" data-a>
+      <div class="lz-sec-h"><span class="hw" data-colors="azul">el prototipo</span><span class="lz-hint hand">tocá cada función ✦</span></div>
+      <div class="lz-clone" data-clone="#forma [data-tabs]"></div>
+      <div class="lz-g lz-g-strip" style="margin-top:50px">
+        <figure class="lz-scr rise" style="--c:1/5;--r:1/8"><img data-from="#forma img[alt='Pantalla de FORMA: Testimonios']" alt="Pantalla de FORMA: Testimonios"></figure>
+        <figure class="lz-scr rise" style="--c:5/9;--r:2/9;--dl:.1s"><img data-from="#forma img[alt='Pantalla de FORMA: Calendario semanal']" alt="Pantalla de FORMA: Calendario semanal"></figure>
+        <figure class="lz-scr rise" style="--c:9/13;--r:1/8;--dl:.2s"><img data-from="#forma img[alt='Pantalla de FORMA: Contacto']" alt="Pantalla de FORMA: Contacto"></figure>
+      </div>
+    </div>
+
+    <div class="lz-proof" data-a>
+      <p class="lz-num rise"><b>6</b><span>funciones clave, de las rutas personalizadas al seguimiento del progreso</span></p>
+      <p class="lz-state"><span>estado</span>Prototipo interactivo (MVP)</p>
+    </div>
+
+    <div class="lz-lazo" data-a>
+      <p><span class="hw" data-colors="vino">el lazo que dejó en mí</span></p>
+      <blockquote class="rise">FORMA me abrió la puerta al <span class="hl">diseño digital</span>: otra dimensión de mi creatividad.</blockquote>
+    </div>
+  </article>
+
+  <!-- ===================== 04 · FRUTSI ===================== -->
+  <article class="lzc" style="--pc:var(--azul)">
+    <div class="lz-open" data-a>
+      <div class="lz-o-txt">
+        <p class="lz-no"><span class="hw" data-colors="azul">Lazo 04</span><small>creatividad y comunicación</small></p>
+        <h2 class="lz-name">Frutsi</h2>
+        <p class="kp">el sabor de seguir <i>jugando</i> ✦</p>
+        <p class="lz-reto rise">Relanzar un ícono de la infancia salvadoreña para <em>dos generaciones</em>: que los padres vuelvan a sus recuerdos y los niños descubran un mundo de fantasía.</p>
+        <p class="lz-badge rise">3.er lugar · Cross Media · Adventure Week 2024</p>
+      </div>
+      <div class="lz-g lz-g-open">
+        <figure class="lz-fr rise" style="--c:2/10;--r:1/15;--rot:2deg"><img data-from="#frutsi img[alt^='Key visual de Frutsi']" alt="Key visual de Frutsi"></figure>
+        <figure class="lz-fr rise" style="--c:7/13;--r:11/19;--rot:-5deg;--dl:.2s"><img data-from="#frutsi img[alt^='El equipo recibiendo']" alt="El equipo recibiendo el tercer lugar en Adventure Week"><span class="lz-cap hand">¡tercer lugar!</span></figure>
+      </div>
+    </div>
+
+    <div class="lz-role lz-rev" data-a>
+      <div class="lz-role-txt">
+        <p class="lz-h"><span class="hw" data-colors="vino2">mi rol</span></p>
+        <p class="lz-big rise">Ideé la <b>estrategia cross-media</b> y diseñé los pósteres y las piezas para redes en Illustrator.</p>
+      </div>
+      <div class="lz-g lz-g-two">
+        <figure class="lz-fr rise" style="--c:1/13;--r:1/12;--rot:-1.5deg"><img data-from="#frutsi img[alt^='Valla con niño']" alt="Valla con niño jugando videojuegos"></figure>
+      </div>
+    </div>
+
+    <div class="lz-made" data-a>
+      <div class="lz-sec-h"><span class="hw" data-colors="azul">una idea, cuatro canales</span></div>
+      <div class="lz-g lz-g-canales">
+        <figure class="lz-fr rise" style="--c:1/6;--r:1/14;--rot:-2deg"><img data-from="#frutsi img[alt^='Historias de Instagram']" alt="Historias de Instagram de la campaña"><span class="lz-tag">redes y print</span></figure>
+        <figure class="lz-fr rise" style="--c:6/13;--r:1/8;--rot:1.5deg;--dl:.1s"><img data-from="#frutsi img[alt^='Piezas audiovisuales']" alt="Piezas audiovisuales"><span class="lz-tag">audiovisual</span></figure>
+        <figure class="lz-fr rise" style="--c:6/13;--r:8/15;--rot:-1deg;--dl:.2s"><img data-from="#frutsi img[alt^='Frutsi Aventura']" alt="Frutsi Aventura: realidad virtual en el parque"><span class="lz-tag">Frutsi Aventura · realidad virtual</span></figure>
+      </div>
+      <figure class="lz-board rise"><img data-from="#frutsi img[alt^='Board completo']" alt="Board completo de la campaña Frutsi"><figcaption class="hand">todo en una mirada</figcaption></figure>
+    </div>
+
+    <div class="lz-proof" data-a>
+      <p class="lz-num rise"><b>+300</b><span>recuerdos reales de salvadoreños como materia prima de la campaña</span></p>
+      <p class="lz-state"><span>estado</span>Propuesta de campaña · 3.er lugar en Adventure Week</p>
+    </div>
+
+    <div class="lz-lazo" data-a>
+      <p><span class="hw" data-colors="vino">el lazo que dejó en mí</span></p>
+      <blockquote class="rise">Frutsi amplió mi creatividad: aprendí a <span class="hl">conceptualizar y comunicar</span> una idea en distintos medios.</blockquote>
+    </div>
+  </article>
+
+  <!-- ===================== 05 · PROYECTO EDITORIAL ===================== -->
+  <article class="lzc" style="--pc:var(--vino)">
+    <div class="lz-open lz-rev" data-a>
+      <div class="lz-o-txt">
+        <p class="lz-no"><span class="hw" data-colors="vino">Lazo 05</span><small>colaboración y criterio</small></p>
+        <h2 class="lz-name">Proyecto Editorial</h2>
+        <p class="kp">evolucionar sin perder la <i>esencia</i> ✦</p>
+        <p class="lz-reto rise">Una revista muy querida de un reconocido medio salvadoreño quería volver, pero <em>más digital y cercana</em> a las generaciones Z y Y.</p>
+      </div>
+      <div class="lz-g lz-g-open">
+        <figure class="lz-fr rise" style="--c:1/9;--r:1/12;--rot:-3deg"><img data-from="#editorial img[alt^='Equipo planificando']" alt="Equipo planificando la investigación"></figure>
+        <figure class="lz-fr rise" style="--c:5/13;--r:8/18;--rot:3deg;--dl:.2s"><img data-from="#editorial img[alt^='Focus group']" alt="Focus group"></figure>
+      </div>
+    </div>
+
+    <div class="lz-role" data-a>
+      <div class="lz-role-txt">
+        <p class="lz-h"><span class="hw" data-colors="vino2">mi rol</span></p>
+        <p class="lz-big rise">Ayudé a plantear la investigación, participé en <b>focus groups y entrevistas</b>, y diseñé el look &amp; feel y la propuesta UX/UI del sitio.</p>
+        <p class="lz-num rise"><b>531</b><span>personas encuestadas y 4 focus groups antes de diseñar</span></p>
+      </div>
+      <div class="lz-g lz-g-two">
+        <figure class="lz-fr rise" style="--c:1/13;--r:1/13;--rot:2deg"><img data-from="#editorial img[alt^='Sesión de trabajo']" alt="Sesión de trabajo en equipo"></figure>
+      </div>
+    </div>
+
+    <div class="lz-made" data-a>
+      <div class="lz-sec-h"><span class="hw" data-colors="vino">la propuesta</span></div>
+      <div class="lz-ed">
+        <figure class="lz-laptop rise"><img data-from="#editorial img[alt^='Mockup de la propuesta UX/UI']" alt="Mockup de la propuesta UX/UI del sitio web en una laptop"></figure>
+        <ol class="lz-list">
+          <li class="rise"><b>Posicionamiento</b>un lugar donde distintas edades coinciden</li>
+          <li class="rise" style="--dl:.1s"><b>Estrategia de contenido</b>para su nueva comunidad</li>
+          <li class="rise" style="--dl:.2s"><b>Experiencia de lanzamiento</b>cómo presentar la revista renovada</li>
+          <li class="rise" style="--dl:.3s"><b>Look &amp; feel y sitio web</b>diseñados en Figma</li>
+        </ol>
+      </div>
+      <p class="lz-state"><span>estado</span>Propuesta de relanzamiento + prototipo web</p>
+    </div>
+
+    <div class="lz-lazo" data-a>
+      <p><span class="hw" data-colors="vino">el lazo que dejó en mí</span></p>
+      <blockquote class="rise">Aprendí a <span class="hl">colaborar</span>: escuchar, defender mis ideas y construir en equipo.</blockquote>
+    </div>
+  </article>
+
+  <!-- ===================== 06 · PIZZA HUT 360° ===================== -->
+  <article class="lzc" style="--pc:var(--tinta)">
+    <div class="lz-open" data-a>
+      <div class="lz-o-txt">
+        <p class="lz-no"><span class="hw" data-colors="azul">Lazo 06</span><small>pensamiento estratégico y viabilidad</small></p>
+        <h2 class="lz-name">Pizza Hut 360°</h2>
+        <p class="kp">un delivery que <b>piensa</b>, un delivery que <i>siente</i> ✦</p>
+        <p class="lz-reto rise">El delivery no siempre era consistente y eso enfriaba la relación con el cliente. Propusimos <em>Smart Delivery &amp; Personalización</em>: que cada pedido se sienta pensado para quien lo recibe.</p>
+      </div>
+      <div class="lz-g lz-g-open">
+        <figure class="lz-ph rise" style="--c:1/13;--r:2/14"><img data-from="#pizzahut img[alt^='Key visual de Pizza Hut']" alt="Key visual de Pizza Hut 360° Experience"></figure>
+      </div>
+    </div>
+
+    <div class="lz-role lz-rev" data-a>
+      <div class="lz-role-txt">
+        <p class="lz-h"><span class="hw" data-colors="vino2">mi rol</span></p>
+        <p class="lz-big rise">Me enfoqué en el <b>análisis y la estrategia</b>: cómo funcionaban juntas las soluciones, su viabilidad y los KPIs. También participé en la app.</p>
+      </div>
+      <div class="lz-g lz-g-two">
+        <figure class="lz-fr rise" style="--c:1/13;--r:1/11;--rot:-2deg"><img data-from="#pizzahut img[alt^='Tres pilares']" alt="Tres pilares de la estrategia"></figure>
+      </div>
+    </div>
+
+    <div class="lz-made" data-a>
+      <div class="lz-sec-h"><span class="hw" data-colors="azul">lo que desarrollamos</span></div>
+      <div class="lz-g lz-g-canales">
+        <figure class="lz-fr rise" style="--c:1/8;--r:1/15;--rot:-1.5deg"><img data-from="#pizzahut img[alt^='Mockups de la app']" alt="Mockups de la app con cupones y Pizza Party Rewards"><span class="lz-tag">app personalizada</span></figure>
+        <figure class="lz-fr rise" style="--c:8/13;--r:1/8;--rot:2deg;--dl:.1s"><img data-from="#pizzahut img[alt^='Kit para niños']" alt="Kit para niños"><span class="lz-tag">kit para niños</span></figure>
+        <figure class="lz-fr rise" style="--c:8/13;--r:8/15;--rot:-2deg;--dl:.2s"><img data-from="#pizzahut img[alt^='Piezas del kit']" alt="Piezas del kit infantil"></figure>
+      </div>
+    </div>
+
+    <div class="lz-proof" data-a>
+      <div class="lz-kpis rise"><span><b>+15 %</b>pedidos</span><span><b>+20 %</b>satisfacción</span><span><b>5–12 %</b>ticket promedio</span></div>
+      <p class="lz-state"><span>estado</span>Propuesta estratégica · proyecciones para una prueba piloto, no resultados medidos</p>
+    </div>
+
+    <div class="lz-lazo" data-a>
+      <figure class="lz-fr lz-lazo-pic" style="--rot:-4deg"><img data-from="#pizzahut img[alt^='El equipo del proyecto']" alt="El equipo del proyecto"></figure>
+      <div>
+        <p><span class="hw" data-colors="vino">el lazo que dejó en mí</span></p>
+        <blockquote class="rise">Mi lado analítico y mi lado creativo se <span class="hl">complementan</span>: esa es mi fortaleza estratégica.</blockquote>
+      </div>
+    </div>
+  </article>
+
+  <!-- ===================== 07 · LOTOG ===================== -->
+  <article class="lzc" style="--pc:var(--vino2)">
+    <div class="lz-open lz-rev" data-a>
+      <div class="lz-o-txt">
+        <p class="lz-no"><span class="hw" data-colors="vino2">Lazo 07</span><small>autonomía y ejecución profesional</small></p>
+        <h2 class="lz-name">LOTOG</h2>
+        <p class="kp">la <b>lotería</b>, edición <i>Guru</i> ✦</p>
+        <p class="lz-reto rise">La Peak Gala de The Office Gurus necesitaba una actividad que <em>acercara a personas de distintos equipos</em>. Reinterpreté la lotería salvadoreña desde la cultura de Gurus.</p>
+      </div>
+      <div class="lz-g lz-g-open">
+        <figure class="lz-ph rise" style="--c:1/11;--r:1/12"><img data-from="#lotog img[alt^='Caja de LOTOG']" alt="Caja de LOTOG con cartas y tableros"></figure>
+        <figure class="lz-fr rise" style="--c:6/13;--r:8/17;--rot:4deg;--dl:.2s"><img data-from="#lotog img[alt^='Pantalla de LOTOG']" alt="Pantalla de LOTOG en la Peak Gala"><span class="lz-cap hand">en vivo, en la gala</span></figure>
+      </div>
+    </div>
+
+    <div class="lz-role" data-a>
+      <div class="lz-role-txt">
+        <p class="lz-h"><span class="hw" data-colors="vino2">mi rol</span></p>
+        <p class="lz-big rise">Proyecto individual: planifiqué la <b>experiencia del evento</b> y conceptualicé y diseñé LOTOG.</p>
+        <div class="lz-kpis rise"><span><b>20</b>cartas</span><span><b>30</b>tableros únicos</span><span><b>4</b>premios</span></div>
+      </div>
+      <div class="lz-g lz-g-two">
+        <figure class="lz-fr rise" style="--c:1/8;--r:1/14;--rot:-4deg"><img data-from="#lotog img[alt^='Mano sosteniendo']" alt="Mano sosteniendo las cartas Mia, Inspireher y Oli"></figure>
+        <figure class="lz-fr rise" style="--c:6/13;--r:5/17;--rot:3deg;--dl:.15s"><img data-from="#lotog img[alt^='Colaborador marcando']" alt="Colaborador marcando su tablero"></figure>
+      </div>
+    </div>
+
+    <div class="lz-made" data-a>
+      <div class="lz-clone" data-clone="#lotog [data-lotog]"></div>
+    </div>
+
+    <div class="lz-proof" data-a>
+      <p class="lz-state real"><span>estado</span>Resultado real · implementado y jugado en la Peak Gala de The Office Gurus</p>
+    </div>
+
+    <div class="lz-lazo" data-a>
+      <p><span class="hw" data-colors="vino">el lazo que dejó en mí</span></p>
+      <blockquote class="rise">Aprendí a llevar una idea del <span class="hl">concepto a su ejecución real</span>, en un entorno profesional.</blockquote>
+    </div>
+  </article>
+
+  <!-- ===================== 08 · PANDORA'S ===================== -->
+  <article class="lzc lz-pan" style="--pc:var(--azul)">
+    <div class="lz-gather" aria-hidden="true" data-a><span style="--k:0">empatía</span><span style="--k:1">experiencias</span><span style="--k:2">digital</span><span style="--k:3">creatividad</span><span style="--k:4">colaboración</span><span style="--k:5">estrategia</span><span style="--k:6">ejecución</span></div>
+    <div class="lz-open lz-stack" data-a>
+      <div class="lz-o-txt">
+        <p class="lz-no"><span class="hw" data-colors="azul">Lazo 08</span><small>donde se unen todos los lazos</small></p>
+        <h2 class="lz-name">Pandora's</h2>
+        <p class="kp">jugar <b>juntos</b>, no uno al lado del <i>otro</i> ✦</p>
+        <p class="lz-reto rise">La mayoría de juegos están pensados para una sola forma de participar, y algún niño termina mirando desde un lado. Pandora's es un juego de mesa <em>colaborativo e inclusivo</em> donde cada niño tiene un rol y un reto que solo se logra en equipo.</p>
+        <p class="lz-meta rise">2026 · en dupla con María José Cruz · Joni and Friends El Salvador</p>
+      </div>
+      <div class="lz-pan-media">
+        <div class="lz-clone lz-video" data-clone="#pandoras .pa-media video"></div>
+        <figure class="lz-fr rise" style="--rot:-5deg"><img data-from="#pandoras img[alt^='Niños jugando con el tablero']" alt="Niños jugando con el tablero de Isla Misteriosa"></figure>
+      </div>
+    </div>
+
+    <div class="lz-role lz-rev" data-a>
+      <div class="lz-role-txt">
+        <p class="lz-h"><span class="hw" data-colors="vino2">mi rol</span></p>
+        <p class="lz-big rise">Lo desarrollamos en dupla, <b>de la investigación a la ejecución</b>: entender a los niños, definir la estrategia y convertirla en piezas reales, hasta las impresas en 3D.</p>
+      </div>
+      <div class="lz-g lz-g-two">
+        <figure class="lz-fr rise" style="--c:1/8;--r:1/14;--rot:3deg"><img data-from="#pandoras img[alt^='Niña jugando con la cuerda']" alt="Niña jugando con la cuerda de cuentas"></figure>
+        <figure class="lz-fr rise" style="--c:6/13;--r:6/17;--rot:-3deg;--dl:.15s"><img data-from="#pandoras img[alt^='Niño jugando con bloques']" alt="Niño jugando con bloques"></figure>
+      </div>
+    </div>
+
+    <div class="lz-made" data-a>
+      <div class="lz-clone" data-clone="#pandoras [data-mmap]"></div>
+      <div class="lz-sec-h" style="margin-top:40px"><span class="hw" data-colors="azul">pieza por pieza</span></div>
+      <div class="lz-clone" data-clone="#pandoras .pzl-wrap"></div>
+    </div>
+
+    <div class="lz-proof lz-proof-pan" data-a>
+      <div class="lz-sec-h"><span class="hw" data-colors="azul">la validación</span></div>
+      <div class="lz-kpis rise"><span><b>80 %</b>del juego fue interacción colaborativa</span><span><b>85 %</b>entendió las mecánicas sin instrucción verbal</span><span><b>2 h</b>con niños, familias y una psicopedagoga</span></div>
+      <blockquote class="lz-quote rise">“Los niños no solo participaron, se involucraron.”<cite>Esmeralda Azahar · psicopedagoga</cite></blockquote>
+      <p class="lz-state real"><span>estado</span>Prototipo validado con usuarios reales · Joni and Friends</p>
+    </div>
+
+    <div class="lz-lazo lz-lazo-pan" data-a>
+      <p><span class="hw" data-colors="sol">el lazo que dejó en mí</span></p>
+      <blockquote class="rise">Pandora's marcó un <span class="hl">antes y un después</span>: me dio confianza para retos complejos y reunió investigación, empatía, creatividad, colaboración, diseño y validación.</blockquote>
+    </div>
+  </article>
+
+  <footer class="lz-end" data-a>
+    <h2><span>Cada proyecto me dejó</span> <span class="script">un lazo distinto</span></h2>
+    <button class="lz-exit hand" type="button">↺ volver al portafolio completo</button>
+  </footer>
 </section>
 
 <!-- ================= CASE 1: PANDORA'S ================= -->
@@ -4056,7 +4408,8 @@ $$('[data-dstrip]').forEach(function(st){var tr=$('.dtrack',st),sl=$$('.dsl',st)
 /* secret switch to the condensed cases: double-click "lazos" in the projects title, or Shift+L */
 (function(){var de=document.documentElement,lz=document.getElementById('lz'),h=document.querySelector('#proyectos h2');if(!lz)return;
  function on(v){de.classList.toggle('lz',v);window.dispatchEvent(new Event('resize'));
-  if(v)setTimeout(function(){window.scrollTo({top:lz.getBoundingClientRect().top+window.scrollY-40,behavior:'smooth'})},60)}
+  var tg=v?lz:document.getElementById('proyectos');setTimeout(function(){window.scrollTo({top:tg.getBoundingClientRect().top+window.scrollY-(v?40:70),behavior:v?'smooth':'auto'})},60)}
+ var ex=lz.querySelector('.lz-exit');if(ex)ex.addEventListener('click',function(){on(false)});
  if(h)h.addEventListener('dblclick',function(e){e.preventDefault();var sel=window.getSelection&&window.getSelection();if(sel)sel.removeAllRanges();on(!de.classList.contains('lz'))});
  document.addEventListener('keydown',function(e){var t=e.target;if(t&&(t.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)))return;
   if(e.shiftKey&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&(e.key==='L'||e.key==='l')){e.preventDefault();on(!de.classList.contains('lz'))}});
