@@ -1761,6 +1761,29 @@ html.lz #app > section.case,html.lz #proyectos .fgrid,html.lz .backp,html.lz .rc
  .lz-dark{border-radius:28px}
 }
 
+
+/* v31 · secret flowers, uncropped images, contrast on navy, bold number */
+.lz-key{pointer-events:auto!important;position:relative;z-index:5;display:inline-block;width:clamp(34px,3.2vw,52px);height:auto;vertical-align:top;margin-left:.15em;cursor:default;user-select:none;-webkit-user-select:none}
+.lz-key-end{width:56px;margin-top:6px}
+.lz-g > .lz-fr,.lz-g > .lz-ph,.lz-g > .lz-scr{display:flex;align-items:center;justify-content:center;background:none;padding:0;box-shadow:none;border:0;border-radius:0;overflow:visible}
+.lz-g > .lz-fr img,.lz-g > .lz-ph img,.lz-g > .lz-scr img{width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain}
+.lz-g > .lz-fr img{background:var(--hoja,#fffdf4);padding:clamp(6px,.7vw,10px);box-shadow:0 26px 36px -24px rgba(20,30,70,.6)}
+.lz-g > .lz-ph img{border-radius:22px;box-shadow:0 34px 50px -34px rgba(20,30,70,.6)}
+.lz-g > .lz-scr img{border-radius:12px;border:clamp(5px,.7vw,9px) solid var(--ink);background:var(--ink);box-shadow:0 26px 36px -24px rgba(10,20,50,.7)}
+.lz-moments{align-items:start}
+.lz-moments img{aspect-ratio:auto;height:auto;object-fit:contain}
+.lz-pan-media .lz-fr img{aspect-ratio:auto}
+.lz-lazo-pic img{aspect-ratio:auto}
+.lz-bignum b{font-family:var(--f-title);font-weight:900;font-size:clamp(90px,11vw,170px);line-height:.85;letter-spacing:-.04em}
+.lz-bignum b small{font-size:.5em;vertical-align:.35em;margin-right:.05em}
+/* readable on navy (Ron) */
+.lz-dark .lz-clone .dn,.lz-dark .lz-clone .dcount,.lz-dark .lz-clone .tcount{color:var(--papel)}
+.lz-dark .lz-clone .dsl figcaption b,.lz-dark .lz-clone .hand,.lz-dark .lz-clone .dctl .hand,.lz-dark .lz-clone .tside .hand{color:var(--sol)}
+.lz-dark .lz-clone .dsl figcaption span:last-child{color:var(--papel)}
+.lz-dark .lz-clone .dctl button,.lz-dark .lz-clone .tnav button{border-color:var(--papel);color:var(--papel)}
+.lz-dark .lz-clone .dctl button:hover,.lz-dark .lz-clone .tnav button:hover{color:var(--tinta)}
+
+.lz-anchor{position:relative;display:inline-block}#proyectos .lz-anchor .lz-key{position:absolute;left:100%;top:-.1em;margin:0 0 0 .1em}
 </style>
 <div id="app"><style id="theme" data-state="{}"></style>
 <header class="top" id="top">
@@ -2028,7 +2051,7 @@ html.lz #app > section.case,html.lz #proyectos .fgrid,html.lz .backp,html.lz .rc
   <span class="knot" data-knot style="position:absolute;right:3%;top:30px"></span>
   <div class="idx-head">
     <div><span class="lbl" data-e>My Work</span>
-      <h2 style="margin-top:14px"><span data-e>Ocho</span> <span class="hw" data-e>lazos</span></h2></div>
+      <h2 style="margin-top:14px"><span data-e>Ocho</span> <span class="lz-anchor"><span class="hw" data-e>lazos</span><svg class="dd static lz-key" data-d="florE" data-fill="#e8e83e" aria-hidden="true"></svg></span></h2></div>
     <div class="rise" style="max-width:38ch"><p data-e>Proyectos que conectan investigación, estrategia, creatividad y ejecución. Cada uno dejó algo distinto.</p></div>
   </div>
   <ol class="fgrid">
@@ -2229,7 +2252,7 @@ html.lz #app > section.case,html.lz #proyectos .fgrid,html.lz .backp,html.lz .rc
         <p class="lz-h"><span class="hw" data-colors="vino2">mi rol</span></p>
         <p class="lz-big rise">Me concentré en el <b>UX/UI</b>: llevé la propuesta a interfaces en Figma, cuidando cómo se conecta cada pantalla con las demás.</p>
       </div>
-      <p class="lz-bignum rise"><b>≈50 %</b><span>de las pantallas del prototipo las diseñé yo</span></p>
+      <p class="lz-bignum rise"><b><small>≈</small>50 %</b><span>de las pantallas del prototipo las diseñé yo</span></p>
     </div>
 
     <div class="lz-made" data-a>
@@ -2483,7 +2506,7 @@ html.lz #app > section.case,html.lz #proyectos .fgrid,html.lz .backp,html.lz .rc
 
   <footer class="lz-end" data-a>
     <h2><span>Cada proyecto me dejó</span> <span class="script">un lazo distinto</span></h2>
-    <button class="lz-exit hand" type="button">↺ volver al portafolio completo</button>
+    <svg class="dd static lz-key lz-key-end" data-d="florE" data-fill="#e8e83e" aria-hidden="true"></svg>
   </footer>
 </section>
 
@@ -4408,9 +4431,9 @@ $$('[data-dstrip]').forEach(function(st){var tr=$('.dtrack',st),sl=$$('.dsl',st)
 /* secret switch to the condensed cases: double-click "lazos" in the projects title, or Shift+L */
 (function(){var de=document.documentElement,lz=document.getElementById('lz'),h=document.querySelector('#proyectos h2');if(!lz)return;
  function on(v){de.classList.toggle('lz',v);window.dispatchEvent(new Event('resize'));
-  var tg=v?lz:document.getElementById('proyectos');setTimeout(function(){window.scrollTo({top:tg.getBoundingClientRect().top+window.scrollY-(v?40:70),behavior:v?'smooth':'auto'})},60)}
- var ex=lz.querySelector('.lz-exit');if(ex)ex.addEventListener('click',function(){on(false)});
- if(h)h.addEventListener('dblclick',function(e){e.preventDefault();var sel=window.getSelection&&window.getSelection();if(sel)sel.removeAllRanges();on(!de.classList.contains('lz'))});
+  var tg=v?lz:document.getElementById('proyectos');setTimeout(function(){window.scrollTo({top:tg.getBoundingClientRect().top+window.scrollY-(v?40:70),behavior:v?'smooth':'instant'})},60)}
+
+ document.addEventListener('dblclick',function(e){var k=e.target.closest&&e.target.closest('.lz-key');if(!k)return;e.preventDefault();var sel=window.getSelection&&window.getSelection();if(sel)sel.removeAllRanges();on(!de.classList.contains('lz'))});
  document.addEventListener('keydown',function(e){var t=e.target;if(t&&(t.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)))return;
   if(e.shiftKey&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&(e.key==='L'||e.key==='l')){e.preventDefault();on(!de.classList.contains('lz'))}});
 })();
