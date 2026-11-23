@@ -1784,6 +1784,23 @@ html.lz #app > section.case,html.lz #proyectos .fgrid,html.lz .backp,html.lz .rc
 .lz-dark .lz-clone .dctl button:hover,.lz-dark .lz-clone .tnav button:hover{color:var(--tinta)}
 
 .lz-anchor{position:relative;display:inline-block}#proyectos .lz-anchor .lz-key{position:absolute;left:100%;top:-.1em;margin:0 0 0 .1em}
+
+/* v32 · tótems never cover their text, colored pills, softer secret flower */
+.lzp .tdeck{display:grid;grid-template-columns:1fr;justify-items:center;row-gap:clamp(70px,9vw,120px)}
+.lzp .tstack{width:min(78%,400px);margin:10px 0 0}
+.lzp .tside{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;position:relative;z-index:6}
+.lz-board figcaption{background:var(--sol);color:var(--tinta)}
+.lz-cap{background:var(--vino2);color:var(--papel)}
+.lz-tag{background:var(--azul);color:var(--papel);border-color:var(--azul)}
+.lz-g-canales .lz-fr:nth-child(2) .lz-tag{background:var(--sol);color:var(--tinta);border-color:var(--sol)}
+.lz-g-canales .lz-fr:nth-child(3) .lz-tag{background:var(--vino2);color:var(--papel);border-color:var(--vino2)}
+.lz-key{opacity:.42;transition:opacity .2s}
+.lz-key:hover{opacity:.6}
+
+.lz-g > figure:has(.lz-tag),.lz-g > figure:has(.lz-cap),.lz-g > figure:has(.lz-me){flex-direction:column}
+.lz-g > figure:has(.lz-tag) img,.lz-g > figure:has(.lz-cap) img,.lz-g > figure:has(.lz-me) img{max-height:calc(100% - 20px)}
+.lz-g > figure .lz-tag,.lz-g > figure .lz-cap,.lz-g > figure .lz-me{position:relative;left:auto;right:auto;bottom:auto;margin-top:-16px;z-index:3}
+.lz-g > figure:has(.lz-tag),.lz-g > figure:has(.lz-cap){z-index:4}
 </style>
 <div id="app"><style id="theme" data-state="{}"></style>
 <header class="top" id="top">
