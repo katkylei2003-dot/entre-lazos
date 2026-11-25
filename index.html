@@ -1908,6 +1908,20 @@ html:not(.hseq) .hero .lede .lw{opacity:1;transform:none;filter:none}
 .replay-intro svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .replay-intro:hover,.replay-intro:focus-visible{opacity:1;background:var(--sol);transform:rotate(-200deg)}
 @media (prefers-reduced-motion:reduce){.hero .lede .lw{opacity:1;transform:none;filter:none}.hero .hey .ty .ch{animation:none}}
+
+/* v36 · capability tags under "el lazo que dejó en mí" (presentation only) */
+.lz-cap-tags,.lz-cap-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:20px 0 0}
+.lz-lazo:has(.lz-lazo-pic) .lz-cap-tags{justify-content:flex-start}
+.lz-ctag{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-title);font-size:14px;letter-spacing:.06em;line-height:1;padding:9px 16px 9px 13px;border-radius:999px;background:var(--azul);color:var(--papel);cursor:default;user-select:none}
+.lz-ctag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--sol);flex:none}
+.lzc:nth-of-type(odd) .lz-cap-tags .lz-ctag{background:var(--vino2)}
+.lz-dark .lz-cap-tags .lz-ctag{background:var(--sol);color:var(--noche)}
+.lz-dark .lz-cap-tags .lz-ctag::before{background:var(--vino)}
+.lz-ctag.sm{font-size:11.5px;padding:7px 13px 7px 11px;background:transparent;color:var(--papel);border:1.5px solid color-mix(in srgb,var(--papel) 55%,transparent)}
+.lz-ctag.sm::before{width:5px;height:5px;background:var(--cielo)}
+.lz-lazo-pan .lz-cap-tags .lz-ctag{background:var(--sol);color:var(--tinta)}
+.lz-lazo-pan .lz-cap-tags .lz-ctag::before{background:var(--vino)}
+.lz-cap-row{margin-top:12px;max-width:640px;margin-inline:auto}
 </style>
 <template id="kinTpl"><p class="kin" aria-label="Soy la forma particular en que muchas cosas se encontraron.">
  <span class="kl" aria-hidden="true"><span class="k" style="--i:0">Soy</span> <span class="k" style="--i:1">la</span> <span class="k" style="--i:2">forma</span></span>
@@ -2303,7 +2317,7 @@ html:not(.hseq) .hero .lede .lw{opacity:1;transform:none;filter:none}
 
     <div class="lz-lazo" data-a>
       <p><span class="hw" data-colors="vino">el lazo que dejó en mí</span></p>
-      <blockquote class="rise">Aprendí a diseñar desde la <span class="hl">empatía</span>, mirando más allá de lo evidente.</blockquote>
+      <blockquote class="rise">Aprendí a diseñar desde la <span class="hl">empatía</span>, mirando más allá de lo evidente.</blockquote><p class="lz-cap-tags rise"><span class="lz-ctag">Empatía e investigación</span></p>
     </div>
   </article>
 
@@ -2347,7 +2361,7 @@ html:not(.hseq) .hero .lede .lw{opacity:1;transform:none;filter:none}
 
     <div class="lz-lazo" data-a>
       <p><span class="hw" data-colors="sol">el lazo que dejó en mí</span></p>
-      <blockquote class="rise">Aprendí a convertir hallazgos en <span class="hl">experiencias intencionales</span> y emocionales.</blockquote>
+      <blockquote class="rise">Aprendí a convertir hallazgos en <span class="hl">experiencias intencionales</span> y emocionales.</blockquote><p class="lz-cap-tags rise"><span class="lz-ctag">Diseño de experiencias</span></p>
     </div>
   </article>
 
@@ -2391,7 +2405,7 @@ html:not(.hseq) .hero .lede .lw{opacity:1;transform:none;filter:none}
 
     <div class="lz-lazo" data-a>
       <p><span class="hw" data-colors="vino">el lazo que dejó en mí</span></p>
-      <blockquote class="rise">FORMA me abrió la puerta al <span class="hl">diseño digital</span>: otra dimensión de mi creatividad.</blockquote>
+      <blockquote class="rise">FORMA me abrió la puerta al <span class="hl">diseño digital</span>: otra dimensión de mi creatividad.</blockquote><p class="lz-cap-tags rise"><span class="lz-ctag">Exploración digital</span></p>
     </div>
   </article>
 
@@ -2438,7 +2452,7 @@ html:not(.hseq) .hero .lede .lw{opacity:1;transform:none;filter:none}
 
     <div class="lz-lazo" data-a>
       <p><span class="hw" data-colors="vino">el lazo que dejó en mí</span></p>
-      <blockquote class="rise">Frutsi amplió mi creatividad: aprendí a <span class="hl">conceptualizar y comunicar</span> una idea en distintos medios.</blockquote>
+      <blockquote class="rise">Frutsi amplió mi creatividad: aprendí a <span class="hl">conceptualizar y comunicar</span> una idea en distintos medios.</blockquote><p class="lz-cap-tags rise"><span class="lz-ctag">Creatividad y comunicación</span></p>
     </div>
   </article>
 
@@ -2484,7 +2498,7 @@ html:not(.hseq) .hero .lede .lw{opacity:1;transform:none;filter:none}
 
     <div class="lz-lazo" data-a>
       <p><span class="hw" data-colors="vino">el lazo que dejó en mí</span></p>
-      <blockquote class="rise">Aprendí a <span class="hl">colaborar</span>: escuchar, defender mis ideas y construir en equipo.</blockquote>
+      <blockquote class="rise">Aprendí a <span class="hl">colaborar</span>: escuchar, defender mis ideas y construir en equipo.</blockquote><p class="lz-cap-tags rise"><span class="lz-ctag">Colaboración y criterio</span></p>
     </div>
   </article>
 
@@ -2530,7 +2544,7 @@ html:not(.hseq) .hero .lede .lw{opacity:1;transform:none;filter:none}
       <figure class="lz-fr lz-lazo-pic" style="--rot:-4deg"><img data-from="#pizzahut img[alt^='El equipo del proyecto']" alt="El equipo del proyecto"></figure>
       <div>
         <p><span class="hw" data-colors="vino">el lazo que dejó en mí</span></p>
-        <blockquote class="rise">Mi lado analítico y mi lado creativo se <span class="hl">complementan</span>: esa es mi fortaleza estratégica.</blockquote>
+        <blockquote class="rise">Mi lado analítico y mi lado creativo se <span class="hl">complementan</span>: esa es mi fortaleza estratégica.</blockquote><p class="lz-cap-tags rise"><span class="lz-ctag">Pensamiento estratégico y analítico</span></p>
       </div>
     </div>
   </article>
@@ -2572,7 +2586,7 @@ html:not(.hseq) .hero .lede .lw{opacity:1;transform:none;filter:none}
 
     <div class="lz-lazo" data-a>
       <p><span class="hw" data-colors="vino">el lazo que dejó en mí</span></p>
-      <blockquote class="rise">Aprendí a llevar una idea del <span class="hl">concepto a su ejecución real</span>, en un entorno profesional.</blockquote>
+      <blockquote class="rise">Aprendí a llevar una idea del <span class="hl">concepto a su ejecución real</span>, en un entorno profesional.</blockquote><p class="lz-cap-tags rise"><span class="lz-ctag">Autonomía y ejecución</span></p>
     </div>
   </article>
 
@@ -2619,7 +2633,7 @@ html:not(.hseq) .hero .lede .lw{opacity:1;transform:none;filter:none}
 
     <div class="lz-lazo lz-lazo-pan" data-a>
       <p><span class="hw" data-colors="sol">el lazo que dejó en mí</span></p>
-      <blockquote class="rise">Pandora's marcó un <span class="hl">antes y un después</span>: me dio confianza para retos complejos y reunió investigación, empatía, creatividad, colaboración, diseño y validación.</blockquote>
+      <blockquote class="rise">Pandora's marcó un <span class="hl">antes y un después</span>: me dio confianza para retos complejos y reunió investigación, empatía, creatividad, colaboración, diseño y validación.</blockquote><p class="lz-cap-tags rise"><span class="lz-ctag">Confianza en mi criterio</span></p><p class="lz-cap-row rise" style="--dl:.25s"><span class="lz-ctag sm">Investigación</span><span class="lz-ctag sm">Empatía</span><span class="lz-ctag sm">Creatividad</span><span class="lz-ctag sm">Colaboración</span><span class="lz-ctag sm">Estrategia</span><span class="lz-ctag sm">Ejecución</span></p>
     </div>
   </article>
 
